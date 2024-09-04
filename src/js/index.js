@@ -9,6 +9,21 @@ const app = createApp({
       },
       checked: 0,
       keywords: '',
+      typeList: {
+        zonghe: [
+          { name: '本周免费', value: 10 },
+          { name: '新手推荐', value: 11 },
+        ],
+        dingwei: [
+          { name: '全部', value: 0 },
+          { name: '坦克', value: 3 },
+          { name: '战士', value: 1 },
+          { name: '法师', value: 2 },
+          { name: '刺客', value: 4 },
+          { name: '射手', value: 5 },
+          { name: '辅助', value: 6 },
+        ],
+      },
     };
   },
   methods: {

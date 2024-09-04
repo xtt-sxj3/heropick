@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        /* 
+            引用类型的变量中，保存的是对象在内存中的地址
+        */
+      const arr = [
+        { name: '张三', age: 18 },
+        { name: '李四', age: 20 },
+        { name: '王五', age: 22 },
+      ];
+
+      //newArr和arr指向的是同一个地址，所以修改newArr，arr也会跟着改变
+      //newArr中的数组元素和arr中的数组元素指向的是同一个地址
+      const newArr = arr.filter(item => {
+        return item.age > 19;
+      });
+
+      console.log(newArr);
+    </script>
+  </body>
+</html>

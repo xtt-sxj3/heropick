@@ -9,7 +9,7 @@
     <script src="./node_modules/vue/dist/vue.global.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./node_modules/lodash/lodash.min.js"></script>
-</head>
+  </head>
   <body>
     <!--  -->
     <div id="app">
@@ -21,11 +21,13 @@
             <p>定位</p>
           </div>
           <div class="types">
-            <div class="type-list">
-              <div class="radio" :class="{checked:checked===10}" @click="changeType('zonghe',10)">本周免费</div>
-              <div class="radio" :class="{checked:checked===11}" @click="changeType('zonghe',11)">新手推荐</div>
+            <div v-for="(value,k) in typeList" :key="k" class="type-list">
+              <div v-for="item in value" class="radio" :class="{checked:checked === item.value}" @click="changeType(k,item.value)">
+                {{item.name}}
+              </div>
+              <!-- <div class="radio" :class="{checked:checked===11}" @click="changeType('zonghe',11)">新手推荐</div> -->
             </div>
-            <div class="type-list">
+            <!-- <div class="type-list">
               <div class="radio" :class="{checked:checked===0}" @click="changeType('dingwei',0)">全部</div>
               <div class="radio" :class="{checked:checked===3}" @click="changeType('dingwei',3)">坦克</div>
               <div class="radio" :class="{checked:checked===1}" @click="changeType('dingwei',1)">战士</div>
@@ -33,7 +35,7 @@
               <div class="radio" :class="{checked:checked===2}" @click="changeType('dingwei',2)">法师</div>
               <div class="radio" :class="{checked:checked===5}" @click="changeType('dingwei',5)">射手</div>
               <div class="radio" :class="{checked:checked===6}" @click="changeType('dingwei',6)">辅助</div>
-            </div>
+            </div> -->
           </div>
           <div class="keyword">
             <div class="input">
