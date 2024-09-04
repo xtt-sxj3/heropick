@@ -8,6 +8,7 @@ const app = createApp({
         value: 0,
       },
       checked: 0,
+      keywords: '',
     };
   },
   methods: {
@@ -15,6 +16,12 @@ const app = createApp({
       this.query.key = key;
       this.query.value = value;
       this.checked = value;
+      this.keywords = '';
+    },
+    changeKeyword(event) {
+      this.keywords = event.target.value;
+      this.query.value = 0;
+      this.checked = 0;
     },
   },
   computed: {
@@ -30,15 +37,26 @@ const app = createApp({
     },
     filterHeroes() {
       let { key, value } = this.query;
-      if (key === 'zonghe') {
-        //根据pay_type的值进行过滤
-        return this.heroList.filter(item => item.pay_type === value);
-      } else if (key === 'dingwei') {
-        if (value === 0) {
-          return this.heroList;
-        } else {
-          return this.heroList.filter(item => item.hero_type === value || item.hero_type2 === value);
+      let keywords = this.keywords;
+      if (keywords === '') {
+        if (key === 'zonghe') {
+          //根据pay_type的值进行过滤
+          return this.heroList.filter(item => item.pay_type === value);
+        } else if (key === 'dingwei') {
+          if (value === 0) {
+            return this.heroList;
+          } else {
+            return this.heroList.filter(item => item.hero_type === value || item.hero_type2 === value);
+          }
         }
+      } else {
+        const res = this.heroList.filter(item => item.cname.includes(keywords));
+        //不能直接对原始数据进行修改，需要将res深拷贝一份
+        const newArr = _.cloneDeep(res);
+        return newArr.map(item => {
+          item.cname = item.cname.replace(keywords, `<span style="color: red">${keywords}</span>`);
+          return item;
+        });
       }
     },
   },

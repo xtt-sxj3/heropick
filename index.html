@@ -8,7 +8,8 @@
     <!-- 引入vue.js -->
     <script src="./node_modules/vue/dist/vue.global.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
-  </head>
+    <script src="./node_modules/lodash/lodash.min.js"></script>
+</head>
   <body>
     <!--  -->
     <div id="app">
@@ -36,7 +37,7 @@
           </div>
           <div class="keyword">
             <div class="input">
-              <input type="text" placeholder="请输入你要搜索的英雄名" />
+              <input type="text" placeholder="请输入你要搜索的英雄名" :value="keywords" @input="changeKeyword" />
             </div>
           </div>
         </div>
