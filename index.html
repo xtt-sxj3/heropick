@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./src/assets/index.css" />
     <!-- 引入vue.js -->
     <script src="./node_modules/vue/dist/vue.global.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <!--  -->
@@ -42,10 +43,10 @@
 
         <!-- 下面列表展示部分 -->
         <ul class="list">
-          <li>
-            <a href="https://pvp.qq.com/web201605/herodetail/519.shtml" target="_blank">
-              <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/519/519.jpg" />
-              <span>敖隐</span>
+          <li v-for="hero in heroList" :key="id_name">
+            <a :href="heroDetail(hero.ename)" target="_blank">
+              <img :src="heroImage(hero.ename)" />
+              <span v-html="hero.cname "></span>
             </a>
           </li>
         </ul>
