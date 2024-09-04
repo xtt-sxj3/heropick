@@ -7,7 +7,7 @@
   </head>
   <body>
     <script>
-        /* 
+      /* 
             引用类型的变量中，保存的是对象在内存中的地址
         */
       const arr = [
@@ -23,6 +23,10 @@
       });
 
       console.log(newArr);
+
+      //修改newArr中的数组元素，arr中的数组元素也会跟着改变
+      newArr[0].age = 30;
+      console.log(arr);
     </script>
   </body>
 </html>

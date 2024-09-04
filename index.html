@@ -22,7 +22,12 @@
           </div>
           <div class="types">
             <div v-for="(value,k) in typeList" :key="k" class="type-list">
-              <div v-for="item in value" class="radio" :class="{checked:checked === item.value}" @click="changeType(k,item.value)">
+              <div
+                v-for="item in value"
+                :key="item.value"
+                class="radio"
+                :class="{checked:checked === item.value}"
+                @click="changeType(k,item.value)">
                 {{item.name}}
               </div>
               <!-- <div class="radio" :class="{checked:checked===11}" @click="changeType('zonghe',11)">新手推荐</div> -->
